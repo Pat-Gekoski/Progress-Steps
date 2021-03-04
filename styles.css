@@ -1,0 +1,112 @@
+:root {
+   --progress--fill: blueviolet;
+   --progress--empty: rgb(174, 182, 185);
+   --text-color: rgb(58, 49, 49);
+}
+
+*, 
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+html {
+   font-size: 62.5%; 
+   box-sizing: border-box;
+}
+
+body {
+   background-color: #f6f7fb;
+   color: var(--text-color);
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.container {
+   text-align: center;
+}
+
+.progress-container::before {
+   content: "";
+   width: 100%;
+   background-color: var(--progress--empty);
+   height: 4px;
+   position: absolute;
+   top: 50%;
+   left: 0;
+   transform: translateY(-50%);
+   z-index: -1;
+}
+
+.progress-container {
+   display: flex;
+   justify-content: space-between;
+   max-width: 100%;
+   width: 38rem;
+   margin: 0 auto 3rem;
+   position: relative;
+   font-size: 1.6rem;
+}
+
+.progress {
+   width: 0%;
+   background-color: var(--progress--fill);
+   height: 4px;
+   position: absolute;
+   top: 50%;
+   left: 0;
+   transform: translateY(-50%);
+   z-index: -1;
+   transition: width .4s ease;
+}
+
+.circle {
+   background-color: #f6f7fb;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 3px solid var(--progress--empty);
+   height: 3rem;
+   width: 3rem;
+   border-radius: 50%;
+   transition: border-color .4s ease;
+}
+
+.circle.active {
+   border-color: var(--progress--fill);
+}
+
+.btn {
+   font-size: 1.6rem;
+   padding: .8rem 2rem;
+   background-color: blueviolet;
+   color: white;
+   border: 0;
+   outline: none;
+   margin: 0 .8rem;
+   border-radius: 3px;
+   box-shadow: .2rem .3rem .5rem rgba(0, 0, 0, .3);
+   cursor: pointer;
+   
+}
+
+.btn:hover:not(:disabled) {
+   box-shadow: .3rem .4rem .8rem rgba(0, 0, 0, .3);
+   transform: translateY(-.2rem);
+}
+
+.btn:active:not(:disabled) {
+   box-shadow: .1rem .2rem .3rem rgba(0, 0, 0, .3);
+   transform: translateY(-.1rem);
+}
+
+.btn:disabled {
+   background-color: var(--progress--empty);
+   color: var(--text-color);
+   box-shadow: none;
+   cursor: not-allowed;
+}
